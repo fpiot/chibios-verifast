@@ -165,6 +165,7 @@ AS   = $(TRGT)gcc -x assembler-with-cpp
 AR   = $(TRGT)ar
 OD   = $(TRGT)objdump
 SZ   = $(TRGT)size
+GDB  = $(TRGT)gdb
 HEX  = $(CP) -O ihex
 BIN  = $(CP) -O binary
 
@@ -209,3 +210,8 @@ ULIBS =
 
 RULESPATH = $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC
 include $(RULESPATH)/rules.mk
+
+gdbwrite:
+	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
+
+.PHONY: gdbwrite
