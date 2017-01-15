@@ -1,7 +1,7 @@
 setup:
-	make -C setup setup
+	make -C env_setup setup
 
 clean:
-	make -C setup clean
+	make -C env_setup clean
 
 .PHONY: setup clean
