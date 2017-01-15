@@ -4,8 +4,25 @@
 
 ## 準備
 
+```
+$ sudo apt-get install git python-pip
+$ git clone https://github.com/fpiot/chibios-verifast.git
+$ cd chibios-verifast
+$ make setup
+```
+
 ## 検証
 
+```
+$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
+$ make vfide
+```
+
 ## ビルド
+
+```
+$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
+$ make
+```
 
 ## 実機動作
