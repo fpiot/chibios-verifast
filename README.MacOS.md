@@ -1,22 +1,25 @@
-# ChibiOS/RTのVeriFastによる検証 (Windows版)
+# ChibiOS/RTのVeriFastによる検証 (MacOS版)
 
 [ChibiOS/RT](http://www.chibios.org/)上で動作するアプリケーションを[VeriFast](https://people.cs.kuleuven.be/~bart.jacobs/verifast/)で検証します。
 
 ## 準備
 
-以下をインストールしてください。
+関連パッケージをインストールしてください。
 
-* [MinGW](http://www.mingw.org/wiki/Getting_Started)
-* [Git](https://git-for-windows.github.io/)
-* [Python 2.7.x](https://www.python.org/downloads/)
+```
+$ brew install wget git python
+```
 
-上記のPythonをインストールする際、`Add python.exe to Path` を選択してください。
+[VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開してPATHを通してください。
 
-![](img/python-installer-add-path1.png)
+```
+$ wget http://82076e0e62875f063ae8-929808a701855dfb71539d0a4342d4be.r54.cf5.rackcdn.com/verifast-nightly-osx.tar.gz
+$ tar xf verifast-nightly-osx.tar.gz
+$ mv verifast-*/ verifast
+$ export PATH=`pwd`/verifast/bin:$PATH
+```
 
-[VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開して `verifast-XXXXXXX\bin` ディレクトリにPATHを通してください。
-
-`C:\MinGW\msys\1.0\msys.bat` によって起動されるコンソールから、本ソースコードをダウンロードして、ツールチェーンを設定してください。
+本ソースコードをダウンロードして、ツールチェーンを設定してください。
 
 ```
 $ git clone https://github.com/fpiot/chibios-verifast.git

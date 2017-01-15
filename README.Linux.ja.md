@@ -1,4 +1,4 @@
-# ChibiOS/RTアプリケーションのVeriFastによる検証 (Linux版)
+# ChibiOS/RTのVeriFastによる検証 (Linux版)
 
 [ChibiOS/RT](http://www.chibios.org/)上で動作するアプリケーションを[VeriFast](https://people.cs.kuleuven.be/~bart.jacobs/verifast/)で検証します。
 
