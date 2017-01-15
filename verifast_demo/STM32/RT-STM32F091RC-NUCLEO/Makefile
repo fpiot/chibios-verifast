@@ -214,4 +214,7 @@ include $(RULESPATH)/rules.mk
 gdbwrite:
 	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
 
-.PHONY: gdbwrite
+vfide:
+	vfide -I . -I $(VERIFAST_INC) main.c
+
+.PHONY: gdbwrite vfide

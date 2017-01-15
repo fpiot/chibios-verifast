@@ -18,6 +18,7 @@
 #include "hal.h"
 #include "test.h"
 
+#if 0
 /*
  * Red LED blinker thread, times are in milliseconds.
  */
@@ -33,11 +34,15 @@ static THD_FUNCTION(Thread1, arg) {
     chThdSleepMilliseconds(500);
   }
 }
+#endif
 
 /*
  * Application entry point.
  */
-int main(void) {
+int main(void)
+    //@ requires true;
+    //@ ensures false;
+{
 
   /*
    * System initializations.
@@ -54,16 +59,20 @@ int main(void) {
    */
   sdStart(&SD2, NULL);
 
+#if 0
   /*
    * Creates the blinker thread.
    */
   chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
+#endif
 
   /*
    * Normal main() thread activity, in this demo it does nothing except
    * sleeping in a loop and check the button state.
    */
-  while (true) {
+  while (true)
+    //@ invariant true;
+  {
     if (!palReadPad(GPIOC, GPIOC_BUTTON))
       TestThread(&SD2);
     chThdSleepMilliseconds(500);
