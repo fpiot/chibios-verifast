@@ -6,13 +6,23 @@
 
 以下をインストールしてください。
 
-* [MinGW](http://www.mingw.org/wiki/Getting_Started)
 * [Git](https://git-for-windows.github.io/)
-* [Python 2.7.x](https://www.python.org/downloads/)
 
-上記のPythonをインストールする際、`Add python.exe to Path` を選択してください。
+[gcc-arm-none-eabi](https://launchpad.net/gcc-arm-embedded/+download)から[最新版のGCC](https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q3-update/+download/gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe)をダウンロードしてインストールしてください。この時ツールチェーンにPATHを通してください。
 
-![](img/python-installer-add-path1.png)
+[MinGW-W64](https://mingw-w64.org/)から[mingw-w64-install.exe](https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe)をダウンロードし、以下の設定でインストールしてください。
+
+* Thread: win32
+* Exception: sjlj
+
+MinGW-W64のコンソールを開いて、[stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
+
+```
+$ git clone https://github.com/texane/stlink.git
+$ (cd stlink && make)
+$ (cd stlink/build/Release && sudo make install)
+$ sudo ldconfig
+```
 
 [VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開して `verifast-XXXXXXX\bin` ディレクトリにPATHを通してください。
 
@@ -44,11 +54,10 @@ $ make
 
 ## 実機動作
 
-ボードとLinux PCをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
+ボードとWindows PCをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
 
 ```
-$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make st-util
+xxx
 ```
 
 別のコンソールを開いて、gdbserver経由でファームウェアを書き込み

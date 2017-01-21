@@ -7,7 +7,16 @@
 関連パッケージをインストールしてください。
 
 ```
-$ sudo apt-get install wget git python-pip libgtk2.0-0
+$ sudo apt-get install wget git libgtk2.0-0 libusb-1.0-0-dev libgtk-3-dev build-essential cmake gcc-arm-none-eabi gdb-arm-none-eabi
+```
+
+[stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
+
+```
+$ git clone https://github.com/texane/stlink.git
+$ (cd stlink && make)
+$ (cd stlink/build/Release && sudo make install)
+$ sudo ldconfig
 ```
 
 [VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開してPATHを通してください。
@@ -23,8 +32,6 @@ $ export PATH=`pwd`/verifast/bin:$PATH
 
 ```
 $ git clone https://github.com/fpiot/chibios-verifast.git
-$ cd chibios-verifast
-$ make setup
 ```
 
 ## 検証
@@ -50,8 +57,7 @@ $ make
 ボードとLinux PCをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
 
 ```
-$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make st-util
+$ sudo st-util
 ```
 
 別のコンソールを開いて、gdbserver経由でファームウェアを書き込み

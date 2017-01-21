@@ -7,7 +7,9 @@
 関連パッケージをインストールしてください。
 
 ```
-$ brew install wget git python
+$ brew tap PX4/homebrew-px4
+$ brew update
+$ brew install wget git gcc-arm-none-eabi stlink
 ```
 
 [VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開してPATHを通してください。
@@ -19,12 +21,10 @@ $ mv verifast-*/ verifast
 $ export PATH=`pwd`/verifast/bin:$PATH
 ```
 
-本ソースコードをダウンロードして、ツールチェーンを設定してください。
+本ソースコードをダウンロードしてください。
 
 ```
 $ git clone https://github.com/fpiot/chibios-verifast.git
-$ cd chibios-verifast
-$ make setup
 ```
 
 ## 検証
@@ -47,11 +47,10 @@ $ make
 
 ## 実機動作
 
-ボードとLinux PCをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
+ボードとMacをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
 
 ```
-$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make st-util
+$ st-util
 ```
 
 別のコンソールを開いて、gdbserver経由でファームウェアを書き込み
