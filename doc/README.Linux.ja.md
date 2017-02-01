@@ -28,7 +28,7 @@ $ mv verifast-*/ verifast
 $ export PATH=`pwd`/verifast/bin:$PATH
 ```
 
-本ソースコードをダウンロードして、ツールチェーンを設定してください。
+本ソースコードをダウンロードしてください。
 
 ```
 $ git clone https://github.com/fpiot/chibios-verifast.git
@@ -73,7 +73,7 @@ gdbのプロンプトが出るので、実行継続してください。
 (gdb) c
 ```
 
-さらに別のコンソールを開いて、シリアルコンソールを開いた後、ボードの`USER`スイッチを押下してください。
+さらに別のコンソールを開いて、シリアルコンソールを開いた後、ボードの`USER`スイッチを押下してください。以下のようなログが表示されます。
 
 ```
 $ picocom -b 38400 /dev/ttyACM0

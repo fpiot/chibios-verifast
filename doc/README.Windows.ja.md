@@ -7,36 +7,34 @@
 以下をインストールしてください。
 
 * [Git](https://git-for-windows.github.io/)
+* [gcc-arm-none-eabi](https://launchpad.net/gcc-arm-embedded/+download)の[最新版のGCC](https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q3-update/+download/gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe)
+* [TeraTerm](https://ttssh2.osdn.jp/index.html.ja)
+* [cygwin](https://cygwin.com/install.html)
 
-[gcc-arm-none-eabi](https://launchpad.net/gcc-arm-embedded/+download)から[最新版のGCC](https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q3-update/+download/gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe)をダウンロードしてインストールしてください。この時ツールチェーンにPATHを通してください。
+この時、各ツールにはPATHを通してください。また、以下のcygwinパッケージをインストールしてください。
 
-[MinGW-W64](https://mingw-w64.org/)から[mingw-w64-install.exe](https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe)をダウンロードし、以下の設定でインストールしてください。
+* cmake
+* libusb1.0-devel
 
-* Thread: win32
-* Exception: sjlj
-
-MinGW-W64のコンソールを開いて、[stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
+cygwinターミナルを開き、[stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
 
 ```
 $ git clone https://github.com/texane/stlink.git
 $ (cd stlink && make)
-$ (cd stlink/build/Release && sudo make install)
-$ sudo ldconfig
+$ (cd stlink/build/Release && make install)
 ```
 
 [VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開して `verifast-XXXXXXX\bin` ディレクトリにPATHを通してください。
 
-`C:\MinGW\msys\1.0\msys.bat` によって起動されるコンソールから、本ソースコードをダウンロードして、ツールチェーンを設定してください。
+cygwinターミナルを開き、本ソースコードをダウンロードして、ツールチェーンを設定してください。
 
 ```
 $ git clone https://github.com/fpiot/chibios-verifast.git
-$ cd chibios-verifast
-$ make setup
 ```
 
 ## 検証
 
-VeriFastでソースコードを検証するには、以下のようにしてVeriFast IDEを起動してください。
+VeriFastでソースコードを検証するには、cygwinターミナルを開き、以下のようにしてVeriFast IDEを起動してください。
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
@@ -45,7 +43,7 @@ $ make vfide
 
 ## ビルド
 
-ソースコードをビルドしてください。
+cygwinターミナルを開き、ソースコードをビルドしてください。
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
@@ -54,13 +52,13 @@ $ make
 
 ## 実機動作
 
-ボードとWindows PCをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
+ボードとWindows PCをUSBケーブルで接続した後、cygwinターミナルを開き、st-utilを起動して待機中にしてください。
 
 ```
-xxx
+$ (cd /usr/local/lib && st-util)
 ```
 
-別のコンソールを開いて、gdbserver経由でファームウェアを書き込み
+別のcygwinターミナルを開いて、gdbserver経由でファームウェアを書き込み
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
@@ -71,4 +69,20 @@ gdbのプロンプトが出るので、実行継続してください。
 
 ```
 (gdb) c
+```
+
+TeraTermを使ってボーレート38400でシリアルコンソールを開いた後、ボードの`USER`スイッチを押下してください。以下のようなログが表示されます。
+
+```
+*** ChibiOS/RT test suite
+***
+*** Kernel:       3.1.5
+*** Compiled:     Jan 15 2017 - 20:38:01
+*** Compiler:     GCC 4.8.4 20140725 (release) [ARM/embedded-4_8-branch revision 213147]
+*** Architecture: ARMv6-M
+*** Core Variant: Cortex-M0
+*** Port Info:    Preemption through NMI
+*** Platform:     STM32F091xC Entry Level Access Line devices
+*** Test Board:   STMicroelectronics NUCLEO-F091RC
+--snip--
 ```
