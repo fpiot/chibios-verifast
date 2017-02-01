@@ -9,7 +9,15 @@
 ```
 $ brew tap PX4/homebrew-px4
 $ brew update
-$ brew install wget git gcc-arm-none-eabi stlink
+$ brew install wget git gcc-arm-none-eabi cmake
+```
+
+[stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
+
+```
+$ git clone https://github.com/texane/stlink.git
+$ (cd stlink && make)
+$ (cd stlink/build/Release && sudo make install)
 ```
 
 [VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開してPATHを通してください。
