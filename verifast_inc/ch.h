@@ -21,8 +21,8 @@ typedef void *tfunc_t;
 /*===========================================================================*/
 
 void chSysInit(void);
-    //@ requires true;
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, 1);
+    //@ ensures chibios_sys_state_context(currentThread, 2);
 
 void chThdSleepMilliseconds(uint32_t msec);
     //@ requires true;
