@@ -5,6 +5,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+//@ #include "ghost-chibios.gh"
+
 struct ch_thread {
   void *dummy;
 };

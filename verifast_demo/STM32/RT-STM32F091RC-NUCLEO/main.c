@@ -40,7 +40,7 @@ static THD_FUNCTION(Thread1, arg) {
  * Application entry point.
  */
 int main(void)
-    //@ requires true;
+    //@ requires chibios_sys_state_context(currentThread, 0);
     //@ ensures false;
 {
 
