@@ -15,8 +15,8 @@
 /*===========================================================================*/
 
 void halInit(void);
-    //@ requires chibios_sys_state_context(currentThread, 0);
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, InitState);
+    //@ ensures chibios_sys_state_context(currentThread, HALInitedState);
 
 uint8_t palReadPad(int i, uint32_t p);
     //@ requires true;

@@ -1,16 +1,19 @@
 #ifndef __GHOST_CHIBIOS_H
 #define __GHOST_CHIBIOS_H
 
-	predicate chibios_sys_state_context(int threadId, int state);
-	// http://www.chibios.org/dokuwiki/doku.php?id=chibios:book:kernel#system_states
-	// 0: Init state
-	// 1: HAL Inited state
-	// 2: Thread state
-	// 3: IRQ Suspended state
-	// 4: IRQ Disabled state
-	// 5: IRQ WAIT state
-	// 6: ISR state
-	// 7: S-Locked state
-	// 8: I-Locked state
+// http://www.chibios.org/dokuwiki/doku.php?id=chibios:book:kernel#system_states
+inductive SystemState =
+  | InitState
+  | HALInitedState
+  | ThreadState
+  | IRQSuspendedState
+  | IRQDisabledState
+  | IRQWaitState
+  | ISRState
+  | SLockedState
+  | ILockedState
+  ;
+
+predicate chibios_sys_state_context(int threadId; SystemState state);
 
 #endif

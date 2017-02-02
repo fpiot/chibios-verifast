@@ -21,8 +21,8 @@ typedef void *tfunc_t;
 /*===========================================================================*/
 
 void chSysInit(void);
-    //@ requires true;
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, HALInitedState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
 void chThdSleepMilliseconds(uint32_t msec);
     //@ requires true;
@@ -38,7 +38,7 @@ typedef struct SerialConfig SerialConfig;
 SerialDriver SD2;
 
 void sdStart(SerialDriver *sdp, const SerialConfig *config);
-    //@ requires true;
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
 #endif /* _CH_H_ */
