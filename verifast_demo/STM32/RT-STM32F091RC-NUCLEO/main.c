@@ -71,7 +71,7 @@ int main(void)
    * sleeping in a loop and check the button state.
    */
   while (true)
-    //@ invariant true;
+    //@ invariant chibios_sys_state_context(currentThread, ThreadState);
   {
     if (!palReadPad(GPIOC, GPIOC_BUTTON))
       TestThread(&SD2);

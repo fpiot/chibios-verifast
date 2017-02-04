@@ -25,8 +25,8 @@ void chSysInit(void);
     //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
 void chThdSleepMilliseconds(uint32_t msec);
-    //@ requires true;
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
 thread_t *chThdCreateStatic(void *wsp, size_t size,
                             tprio_t prio, tfunc_t pf, void *arg);
