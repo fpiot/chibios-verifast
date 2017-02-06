@@ -12,7 +12,7 @@ See README for your desktop platform:
 
 ## How to verify the code?
 
-Read VeriFast Tutorial ([English](https://people.cs.kuleuven.be/~bart.jacobs/verifast/tutorial.pdf) | [Japanese](https://github.com/jverifast-ug/translate/blob/master/Manual/Tutorial/Tutorial.md)).
+Read VeriFast Tutorial in ([English](https://people.cs.kuleuven.be/~bart.jacobs/verifast/tutorial.pdf) | [Japanese](https://github.com/jverifast-ug/translate/blob/master/Manual/Tutorial/Tutorial.md)).
 
 ## See also
 
