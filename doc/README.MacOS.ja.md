@@ -9,7 +9,7 @@
 ```
 $ brew tap PX4/homebrew-px4
 $ brew update
-$ brew install wget git gcc-arm-none-eabi cmake picocom
+$ brew install wget git gcc-arm-none-eabi cmake picocom libusb
 ```
 
 [stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。

@@ -7,7 +7,7 @@
 関連パッケージをインストールしてください。
 
 ```
-$ sudo apt-get install wget git libgtk2.0-0 libusb-1.0-0-dev libgtk-3-dev build-essential cmake gcc-arm-none-eabi picocom
+$ sudo apt-get install wget git libgtk2.0-0 libusb-1.0-0-dev libgtk-3-dev build-essential cmake gcc-arm-none-eabi gdb-arm-none-eabi picocom
 ```
 
 [stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
