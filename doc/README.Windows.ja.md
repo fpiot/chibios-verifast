@@ -2,7 +2,7 @@
 
 [ChibiOS/RT](http://www.chibios.org/)上で動作するアプリケーションを[VeriFast](https://people.cs.kuleuven.be/~bart.jacobs/verifast/)で検証します。
 
-## 準備
+## 開発環境の構築
 
 以下をインストールしてください。
 
@@ -32,16 +32,7 @@ cygwinターミナルを開き、本ソースコードをダウンロードし�
 $ git clone https://github.com/fpiot/chibios-verifast.git
 ```
 
-## 検証
-
-VeriFastでソースコードを検証するには、cygwinターミナルを開き、以下のようにしてVeriFast IDEを起動してください。
-
-```
-$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make vfide
-```
-
-## ビルド
+## ChibiOSアプリケーションのビルド
 
 cygwinターミナルを開き、ソースコードをビルドしてください。
 
@@ -50,7 +41,7 @@ $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
 $ make
 ```
 
-## 実機動作
+## ChibiOSアプリケーションの実行
 
 ボードとWindows PCをUSBケーブルで接続した後、cygwinターミナルを開き、st-utilを起動して待機中にしてください。
 
@@ -85,4 +76,13 @@ TeraTermを使ってボーレート38400でシリアルコンソールを開い�
 *** Platform:     STM32F091xC Entry Level Access Line devices
 *** Test Board:   STMicroelectronics NUCLEO-F091RC
 --snip--
+```
+
+## ChibiOSアプリケーションの検証
+
+VeriFastでソースコードを検証するには、cygwinターミナルを開き、以下のようにしてVeriFast IDEを起動してください。
+
+```
+$ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
+$ make vfide
 ```
