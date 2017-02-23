@@ -61,8 +61,10 @@ static void tmrfunc(void *p) {
  *
  * @notapi
  */
-void tmr_init(void *p) {
-
+void tmr_init(void *p)
+   //@ requires chibios_sys_state_context(currentThread, ThreadState);
+   //@ ensures chibios_sys_state_context(currentThread, ThreadState);
+{
   chEvtObjectInit(&inserted_event);
   chEvtObjectInit(&removed_event);
   chSysLock();

@@ -39,6 +39,14 @@ void chThdSleepMilliseconds(uint32_t msec);
     //@ requires chibios_sys_state_context(currentThread, ThreadState);
     //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
+void chEvtObjectInit(event_source_t *esp); // XXX should be called on any state
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
+
+void chSysLock(void);
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, SLockedState);
+
 thread_t *chThdCreateStatic(void *wsp, size_t size,
                             tprio_t prio, tfunc_t pf, void *arg);
 
