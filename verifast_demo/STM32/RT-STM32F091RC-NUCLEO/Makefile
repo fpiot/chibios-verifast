@@ -168,7 +168,6 @@ SZ   = $(TRGT)size
 GDB  = $(TRGT)gdb
 HEX  = $(CP) -O ihex
 BIN  = $(CP) -O binary
-STUTIL = $(PATH_STLINK)/st-util
 
 # ARM-specific options here
 AOPT =
@@ -211,9 +210,6 @@ ULIBS =
 
 RULESPATH = $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC
 include $(RULESPATH)/rules.mk
-
-st-util:
-	sudo $(STUTIL)
 
 gdbwrite:
 	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
