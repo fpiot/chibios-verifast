@@ -62,13 +62,20 @@ static void tmrfunc(void *p) {
  * @notapi
  */
 void tmr_init(void *p)
-   //@ requires chibios_sys_state_context(currentThread, ThreadState);
-   //@ ensures chibios_sys_state_context(currentThread, ThreadState);
+   /*@
+       requires chibios_sys_state_context(currentThread, ThreadState) &*&
+           u_integer(&cnt, _);
+   @*/
+   /*@
+       ensures chibios_sys_state_context(currentThread, ThreadState) &*&
+           u_integer(&cnt, 10);
+   @*/
 {
   chEvtObjectInit(&inserted_event);
   chEvtObjectInit(&removed_event);
   chSysLock();
   cnt = POLLING_INTERVAL;
-  chVTSetI(&tmr, MS2ST(POLLING_DELAY), tmrfunc, p);
+  systime_t st = MS2ST(POLLING_DELAY);
+  chVTSetI(&tmr, st, tmrfunc, p);
   chSysUnlock();
 }
