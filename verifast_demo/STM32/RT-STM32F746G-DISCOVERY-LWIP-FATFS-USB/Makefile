@@ -121,7 +121,7 @@ CSRC = $(STARTUPSRC) \
        $(CHIBIOS)/os/hal/lib/streams/memstreams.c \
        $(CHIBIOS)/os/hal/lib/streams/chprintf.c \
        $(CHIBIOS)/os/various/shell.c \
-       web/web.c usbcfg.c main.c
+       web/web.c verified/verified.c usbcfg.c main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -229,6 +229,6 @@ gdbwrite:
 	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
 
 vfide:
-	vfide -I . -I $(VERIFAST_INC) main.c
+	vfide -I $(VERIFAST_INC) verified/verified.c
 
 .PHONY: gdbwrite vfide

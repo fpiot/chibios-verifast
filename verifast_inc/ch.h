@@ -11,6 +11,17 @@ struct ch_thread {
   void *dummy;
 };
 typedef struct ch_thread thread_t;
+
+struct ch_virtual_timer {
+  void *dummy;
+};
+typedef struct ch_virtual_timer virtual_timer_t;
+
+struct event_source {
+  void *dummy;
+};
+typedef struct event_source event_source_t;
+
 typedef uint32_t tprio_t;
 typedef void *tfunc_t;
 

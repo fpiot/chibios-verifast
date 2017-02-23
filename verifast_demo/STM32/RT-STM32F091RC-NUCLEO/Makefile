@@ -215,6 +215,6 @@ gdbwrite:
 	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
 
 vfide:
-	vfide -I . -I $(VERIFAST_INC) main.c
+	vfide -I $(VERIFAST_INC) main.c
 
 .PHONY: gdbwrite vfide
