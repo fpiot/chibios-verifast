@@ -10,6 +10,11 @@
 #define GPIOC 0x00000800
 #define GPIOC_BUTTON 13
 
+struct BaseBlockDevice_struct {
+  void *dummy;
+};
+typedef struct BaseBlockDevice_struct BaseBlockDevice;
+
 /*===========================================================================*/
 /* External declarations.                                                    */
 /*===========================================================================*/
@@ -19,6 +24,10 @@ void halInit(void);
     //@ ensures chibios_sys_state_context(currentThread, HALInitedState);
 
 uint8_t palReadPad(int i, uint32_t p);
+    //@ requires true;
+    //@ ensures true;
+
+bool blkIsInserted(BaseBlockDevice *bbdp);
     //@ requires true;
     //@ ensures true;
 

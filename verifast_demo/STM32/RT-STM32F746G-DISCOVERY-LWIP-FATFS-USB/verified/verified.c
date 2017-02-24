@@ -16,7 +16,7 @@ static virtual_timer_t tmr;
 /**
  * @brief   Debounce counter.
  */
-static unsigned int cnt;
+static int cnt;
 
 /**
  * @brief   Card event sources.
@@ -31,7 +31,17 @@ event_source_t removed_event;
  *
  * @notapi
  */
-static void tmrfunc(void *p) {
+static void tmrfunc(void *p)
+   /*@
+       requires chibios_sys_state_context(currentThread, ISRState) &*&
+           integer(&cnt, ?count);
+   @*/
+   /*@
+       ensures chibios_sys_state_context(currentThread, ISRState) &*&
+           integer(&cnt, _);
+   @*/
+
+{
   BaseBlockDevice *bbdp = p;
 
   chSysLockFromISR();
@@ -50,7 +60,8 @@ static void tmrfunc(void *p) {
       chEvtBroadcastI(&removed_event);
     }
   }
-  chVTSetI(&tmr, MS2ST(POLLING_DELAY), tmrfunc, bbdp);
+  systime_t st = MS2ST(POLLING_DELAY);
+  chVTSetI(&tmr, st, tmrfunc, bbdp);
   chSysUnlockFromISR();
 }
 
@@ -64,11 +75,11 @@ static void tmrfunc(void *p) {
 void tmr_init(void *p)
    /*@
        requires chibios_sys_state_context(currentThread, ThreadState) &*&
-           u_integer(&cnt, _);
+           integer(&cnt, _);
    @*/
    /*@
        ensures chibios_sys_state_context(currentThread, ThreadState) &*&
-           u_integer(&cnt, 10);
+           integer(&cnt, 10);
    @*/
 {
   chEvtObjectInit(&inserted_event);

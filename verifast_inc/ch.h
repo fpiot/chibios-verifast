@@ -55,6 +55,10 @@ void chVTSetI(virtual_timer_t *vtp, systime_t delay, vtfunc_t vtfunc, void *par)
     //@ requires chibios_sys_state_context(currentThread, ?state) &*& chibios_sys_state_iclass(state) == true;
     //@ ensures chibios_sys_state_context(currentThread, state);
 
+void chEvtBroadcastI(event_source_t *esp);
+    //@ requires chibios_sys_state_context(currentThread, ?state) &*& chibios_sys_state_iclass(state) == true;
+    //@ ensures chibios_sys_state_context(currentThread, state);
+
 void chSysLock(void);
     //@ requires chibios_sys_state_context(currentThread, ThreadState);
     //@ ensures chibios_sys_state_context(currentThread, SLockedState);
@@ -62,6 +66,14 @@ void chSysLock(void);
 void chSysUnlock(void);
     //@ requires chibios_sys_state_context(currentThread, SLockedState);
     //@ ensures chibios_sys_state_context(currentThread, ThreadState);
+
+void chSysLockFromISR(void);
+    //@ requires chibios_sys_state_context(currentThread, ISRState);
+    //@ ensures chibios_sys_state_context(currentThread, ILockedState);
+
+void chSysUnlockFromISR(void);
+    //@ requires chibios_sys_state_context(currentThread, ILockedState);
+    //@ ensures chibios_sys_state_context(currentThread, ISRState);
 
 thread_t *chThdCreateStatic(void *wsp, size_t size,
                             tprio_t prio, tfunc_t pf, void *arg);
