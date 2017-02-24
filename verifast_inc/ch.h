@@ -47,13 +47,13 @@ void chThdSleepMilliseconds(uint32_t msec);
     //@ requires chibios_sys_state_context(currentThread, ThreadState);
     //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
-void chEvtObjectInit(event_source_t *esp); // XXX should be called on any state
-    //@ requires chibios_sys_state_context(currentThread, ThreadState);
-    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
+void chEvtObjectInit(event_source_t *esp);
+    //@ requires chibios_sys_state_context(currentThread, ?state) &*& chibios_sys_state_any(state) == true;
+    //@ ensures chibios_sys_state_context(currentThread, state);
 
-void chVTSetI(virtual_timer_t *vtp, systime_t delay, vtfunc_t vtfunc, void *par); // XXX should be called on I-Locked and S-Locked
-    //@ requires chibios_sys_state_context(currentThread, SLockedState);
-    //@ ensures chibios_sys_state_context(currentThread, SLockedState);
+void chVTSetI(virtual_timer_t *vtp, systime_t delay, vtfunc_t vtfunc, void *par);
+    //@ requires chibios_sys_state_context(currentThread, ?state) &*& chibios_sys_state_iclass(state) == true;
+    //@ ensures chibios_sys_state_context(currentThread, state);
 
 void chSysLock(void);
     //@ requires chibios_sys_state_context(currentThread, ThreadState);

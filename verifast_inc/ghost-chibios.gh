@@ -16,4 +16,19 @@ inductive SystemState =
 
 predicate chibios_sys_state_context(int threadId; SystemState state);
 
+fixpoint bool chibios_sys_state_any(SystemState state) { return true; }
+fixpoint bool chibios_sys_state_iclass(SystemState state) {
+  switch(state) {
+    case InitState: return false;
+    case HALInitedState: return false;
+    case ThreadState: return false;
+    case IRQSuspendedState: return false;
+    case IRQDisabledState: return false;
+    case IRQWaitState: return false;
+    case ISRState: return false;
+    case SLockedState: return true;
+    case ILockedState: return true;
+  }
+}
+
 #endif
