@@ -39,9 +39,7 @@ ifeq ($(USE_THUMB),)
 endif
 
 # Enable this if you want to see the full log while compiling.
-ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = no
-endif
+USE_VERBOSE_COMPILE = yes
 
 # If enabled, this option makes the build process faster by not compiling
 # modules not used in the current configuration.
