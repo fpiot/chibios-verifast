@@ -87,12 +87,12 @@ void chSysUnlockFromISR(void);
 
 thread_t *chThdCreateStatic(void *wsp, size_t size,
                             tprio_t prio, tfunc_t pf, void *arg);
-    //@ requires true;
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
 void chRegSetThreadName(const char *name);
-    //@ requires true;
-    //@ ensures true;
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 
 struct SerialDriver;
 typedef struct SerialDriver SerialDriver;
