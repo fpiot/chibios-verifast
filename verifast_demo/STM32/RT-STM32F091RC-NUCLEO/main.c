@@ -27,7 +27,6 @@ static THD_FUNCTION(Thread1, arg)
     //@ ensures chibios_sys_state_context(currentThread, ThreadState);
 {
 
-  (void)arg;
   chRegSetThreadName("blinker");
   while (true)
     //@ invariant chibios_sys_state_context(currentThread, ThreadState);
