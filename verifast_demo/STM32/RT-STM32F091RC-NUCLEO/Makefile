@@ -194,7 +194,7 @@ UDEFS =
 UADEFS =
 
 # List all user directories here
-UINCDIR =
+UINCDIR = inc
 
 # List the user directory to look for the libraries here
 ULIBDIR =
@@ -213,6 +213,6 @@ gdbwrite:
 	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
 
 vfide:
-	vfide -I $(VERIFAST_INC) main.c
+	vfide -I verifast_inc -I $(VERIFAST_INC) main.c
 
 .PHONY: gdbwrite vfide

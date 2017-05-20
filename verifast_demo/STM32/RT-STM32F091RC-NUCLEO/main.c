@@ -17,13 +17,13 @@
 #include "ch.h"
 #include "hal.h"
 #include "test.h"
+#include "utils_verifast.h"
 
-#if 0
 /*
  * Red LED blinker thread, times are in milliseconds.
  */
-static THD_WORKING_AREA(waThread1, 128);
-static THD_FUNCTION(Thread1, arg) {
+stkalign_t waThread1[THD_WORKING_AREA_NUM(128)];
+static void Thread1(void *arg) {
 
   (void)arg;
   chRegSetThreadName("blinker");
@@ -34,7 +34,6 @@ static THD_FUNCTION(Thread1, arg) {
     chThdSleepMilliseconds(500);
   }
 }
-#endif
 
 /*
  * Application entry point.
@@ -59,12 +58,10 @@ int main(void)
    */
   sdStart(&SD2, NULL);
 
-#if 0
   /*
    * Creates the blinker thread.
    */
   chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
-#endif
 
   /*
    * Normal main() thread activity, in this demo it does nothing except
