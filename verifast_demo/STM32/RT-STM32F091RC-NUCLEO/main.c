@@ -17,17 +17,21 @@
 #include "ch.h"
 #include "hal.h"
 #include "test.h"
-#include "utils_verifast.h"
 
 /*
  * Red LED blinker thread, times are in milliseconds.
  */
-stkalign_t waThread1[THD_WORKING_AREA_NUM(128)];
-static void Thread1(void *arg) {
+static THD_WORKING_AREA(waThread1, 128);
+static THD_FUNCTION(Thread1, arg)
+    //@ requires chibios_sys_state_context(currentThread, ThreadState);
+    //@ ensures chibios_sys_state_context(currentThread, ThreadState);
+{
 
   (void)arg;
   chRegSetThreadName("blinker");
-  while (true) {
+  while (true)
+    //@ invariant chibios_sys_state_context(currentThread, ThreadState);
+  {
     palClearPad(GPIOA, GPIOA_LED_GREEN);
     chThdSleepMilliseconds(500);
     palSetPad(GPIOA, GPIOA_LED_GREEN);
@@ -61,7 +65,7 @@ int main(void)
   /*
    * Creates the blinker thread.
    */
-  chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
+  chThdCreateStatic(waThread1, THD_WORKING_AREA_SIZE(128), NORMALPRIO, Thread1, NULL);
 
   /*
    * Normal main() thread activity, in this demo it does nothing except

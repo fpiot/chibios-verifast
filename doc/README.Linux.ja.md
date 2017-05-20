@@ -67,7 +67,7 @@ gdbのプロンプトが出るので、実行継続してください。
 さらに別のコンソールを開いて、シリアルコンソールを開いた後、ボードの`USER`スイッチを押下してください。以下のようなログが表示されます。
 
 ```
-$ picocom -b 38400 /dev/ttyACM0
+$ picocom -b 9600 /dev/ttyACM0
 picocom v1.7
 --snip--
 Terminal ready

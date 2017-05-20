@@ -7,8 +7,11 @@
 
 //@ #include "ghost-chibios.gh"
 
-#define GPIOC 0x00000800
-#define GPIOC_BUTTON 13
+#define GPIOA 0x00000100
+#define GPIOB 0x00000200
+#define GPIOC 0x00000300
+#define GPIOA_LED_GREEN 5U
+#define GPIOC_BUTTON    13U
 
 struct BaseBlockDevice_struct {
   void *dummy;
@@ -23,7 +26,15 @@ void halInit(void);
     //@ requires chibios_sys_state_context(currentThread, InitState);
     //@ ensures chibios_sys_state_context(currentThread, HALInitedState);
 
-uint8_t palReadPad(int i, uint32_t p);
+uint8_t palReadPad(int port, uint32_t pad);
+    //@ requires true;
+    //@ ensures true;
+
+void palSetPad(int port, uint32_t pad);
+    //@ requires true;
+    //@ ensures true;
+
+void palClearPad(int port, uint32_t pad);
     //@ requires true;
     //@ ensures true;
 

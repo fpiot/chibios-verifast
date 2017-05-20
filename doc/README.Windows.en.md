@@ -62,7 +62,7 @@ Continue application from GDB prompt:
 (gdb) c
 ```
 
-Open serial console using TeraTerm with baud rate 38400, and push `USER` button on the board. You will see following log on serial console:
+Open serial console using TeraTerm with baud rate 9600, and push `USER` button on the board. You will see following log on serial console:
 
 ```
 *** ChibiOS/RT test suite

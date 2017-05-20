@@ -188,7 +188,7 @@ CPPWARN = -Wall -Wextra -Wundef
 #
 
 # List all user C define here, like -D_DEBUG=1
-UDEFS =
+UDEFS = -DSERIAL_DEFAULT_BITRATE=9600
 
 # Define ASM defines here
 UADEFS =

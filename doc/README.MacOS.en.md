@@ -68,7 +68,7 @@ Continue application from GDB prompt:
 Open another terminal to open serial console, and push `USER` button on the board. You will see following log on serial console:
 
 ```
-$ picocom -b 38400 /dev/tty.usbmodem1423
+$ picocom -b 9600 /dev/tty.usbmodem1423
 picocom v1.7
 --snip--
 Terminal ready

@@ -26,18 +26,28 @@ typedef uint32_t systime_t;
 typedef uint32_t tprio_t;
 typedef void *tfunc_t;
 typedef void *vtfunc_t;
+typedef uint64_t stkalign_t;
+
+#define THD_WORKING_AREA_SIZE(n) n
+#define THD_WORKING_AREA(s, n) stkalign_t s[n]
 
 #define THD_FUNCTION(tname, arg) void tname(void *arg)
 
 #define CH_CFG_ST_FREQUENCY                 10000
 
-systime_t MS2ST(int msec);
-    //@ requires true;
-    //@ ensures true;
+#define NOPRIO              (tprio_t)0
+#define IDLEPRIO            (tprio_t)1
+#define LOWPRIO             (tprio_t)2
+#define NORMALPRIO          (tprio_t)64
+#define HIGHPRIO            (tprio_t)127
+#define ABSPRIO             (tprio_t)255
 
 /*===========================================================================*/
 /* External declarations.                                                    */
 /*===========================================================================*/
+systime_t MS2ST(int msec);
+    //@ requires true;
+    //@ ensures true;
 
 void chSysInit(void);
     //@ requires chibios_sys_state_context(currentThread, HALInitedState);
@@ -77,6 +87,12 @@ void chSysUnlockFromISR(void);
 
 thread_t *chThdCreateStatic(void *wsp, size_t size,
                             tprio_t prio, tfunc_t pf, void *arg);
+    //@ requires true;
+    //@ ensures true;
+
+void chRegSetThreadName(const char *name);
+    //@ requires true;
+    //@ ensures true;
 
 struct SerialDriver;
 typedef struct SerialDriver SerialDriver;
