@@ -1,6 +1,10 @@
+.gdb_history
+ChibiOS_*/*/*/*/.dep/
+ChibiOS_*/*/*/*/build/
 GPATH
 GRTAGS
 GTAGS
+core
 env_setup/.pioenvs/
 verifast_demo/*/*/.dep/
 verifast_demo/*/*/build/
