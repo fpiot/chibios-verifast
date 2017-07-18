@@ -10,6 +10,7 @@ Install following:
 * [Latest GCC](https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q3-update/+download/gcc-arm-none-eabi-5_4-2016q3-20160926-win32.exe) on [gcc-arm-none-eabi](https://launchpad.net/gcc-arm-embedded/+download)
 * [TeraTerm](https://ttssh2.osdn.jp/index.html.ja)
 * [cygwin](https://cygwin.com/install.html)
+* [ST-LINK USB driver](http://www.st.com/en/embedded-software/stsw-link009.html)
 
 Note needing to set PATH to avobe tools. And install following cygwin packages:
 
