@@ -15,7 +15,9 @@
 この時、各ツールにはPATHを通してください。また、以下のcygwinパッケージをインストールしてください。
 
 * cmake
+* gcc-core (5.3.0)
 * libusb1.0-devel
+* make
 
 cygwinターミナルを開き、[stlink](https://github.com/texane/stlink)をダウンロードしてビルドしてください。
 

@@ -15,7 +15,9 @@ Install following:
 Note needing to set PATH to avobe tools. And install following cygwin packages:
 
 * cmake
+* gcc-core (5.3.0)
 * libusb1.0-devel
+* make
 
 Open cygwin terminal, checkout [stlink](https://github.com/texane/stlink) and build/install it:
 
