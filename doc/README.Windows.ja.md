@@ -25,6 +25,7 @@ cygwinターミナルを開き、[stlink](https://github.com/texane/stlink)を�
 $ git clone https://github.com/texane/stlink.git
 $ (cd stlink && make)
 $ (cd stlink/build/Release && make install)
+$ cp /usr/local/lib/cygstlink-shared-1.dll /usr/local/bin/
 ```
 
 [VeriFastの最新版をダウンロード](https://github.com/verifast/verifast#binaries)し、展開して `verifast-XXXXXXX\bin` ディレクトリにPATHを通してください。

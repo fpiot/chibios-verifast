@@ -25,6 +25,7 @@ Open cygwin terminal, checkout [stlink](https://github.com/texane/stlink) and bu
 $ git clone https://github.com/texane/stlink.git
 $ (cd stlink && make)
 $ (cd stlink/build/Release && make install)
+$ cp /usr/local/lib/cygstlink-shared-1.dll /usr/local/bin/
 ```
 
 Download [latest VeriFast](https://github.com/verifast/verifast#binaries), unzip it and set PATH to `verifast-XXXXXXX/bin` directory.
