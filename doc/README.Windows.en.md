@@ -46,26 +46,14 @@ $ make
 
 ## Run the ChibiOS application
 
-After connect the board to your PC using USB cable, kick `st-util` on cygwin terminal:
-
-```
-$ (cd /usr/local/lib && st-util)
-```
-
-Open another cygwin terminal, and dowload application into the board:
+After connect the board to your PC using USB cable, dowload application into the board:
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make gdbwrite
+$ make flash
 ```
 
-Continue application from GDB prompt:
-
-```
-(gdb) c
-```
-
-Open serial console using TeraTerm with baud rate 9600, and push `USER` button on the board. You will see following log on serial console:
+Open serial console "STMicroelectronics STLink Virtual COM Port" using TeraTerm with baud rate 9600, and push `USER` button on the board. You will see following log on serial console:
 
 ```
 *** ChibiOS/RT test suite

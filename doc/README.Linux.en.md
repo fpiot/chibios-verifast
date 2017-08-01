@@ -45,26 +45,14 @@ $ make
 
 ## Run the ChibiOS application
 
-After connect the board to your PC using USB cable, kick `st-util`:
-
-```
-$ sudo st-util
-```
-
-Open another terminal, and download application into the board:
+After connect the board to your PC using USB cable, download application into the board:
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make gdbwrite
+$ make flash
 ```
 
-Continue application from GDB prompt:
-
-```
-(gdb) c
-```
-
-Open another terminal to open serial console, and push `USER` button on the board. You will see following log on serial console:
+Open serial console, and push `USER` button on the board. You will see following log on serial console:
 
 ```
 $ picocom -b 9600 /dev/ttyACM0

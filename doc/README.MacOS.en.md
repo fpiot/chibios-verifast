@@ -46,26 +46,14 @@ $ make
 
 ## Run the ChibiOS application
 
-After connect the board to your Mac using USB cable, kick `st-util`:
-
-```
-$ st-util
-```
-
-Open another terminal, and download application into the board:
+After connect the board to your Mac using USB cable, and download application into the board:
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make gdbwrite
+$ make flash
 ```
 
-Continue application from GDB prompt:
-
-```
-(gdb) c
-```
-
-Open another terminal to open serial console, and push `USER` button on the board. You will see following log on serial console:
+Open serial console, and push `USER` button on the board. You will see following log on serial console:
 
 ```
 $ picocom -b 9600 /dev/tty.usbmodem1423

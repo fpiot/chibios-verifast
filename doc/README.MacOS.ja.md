@@ -46,26 +46,14 @@ $ make
 
 ## ChibiOSアプリケーションの実行
 
-ボードとMacをUSBケーブルで接続した後、st-utilを起動して待機中にしてください。
-
-```
-$ st-util
-```
-
-別のコンソールを開いて、gdbserver経由でファームウェアを書き込みます。
+ボードとMacをUSBケーブルで接続した後、ファームウェアを書き込みます。
 
 ```
 $ cd chibios-verifast/verifast_demo/STM32/RT-STM32F091RC-NUCLEO
-$ make gdbwrite
+$ make flash
 ```
 
-gdbのプロンプトが出るので、実行継続してください。
-
-```
-(gdb) c
-```
-
-さらに別のコンソールを開いて、シリアルコンソールを開いた後、ボードの`USER`スイッチを押下してください。以下のようなログが表示されます。
+シリアルコンソールを開いた後、ボードの`USER`スイッチを押下してください。以下のようなログが表示されます。
 
 ```
 $ picocom -b 9600 /dev/tty.usbmodem1423
