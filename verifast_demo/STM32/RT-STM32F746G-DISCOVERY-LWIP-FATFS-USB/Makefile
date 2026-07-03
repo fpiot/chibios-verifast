@@ -179,9 +179,10 @@ AS   = $(TRGT)gcc -x assembler-with-cpp
 AR   = $(TRGT)ar
 OD   = $(TRGT)objdump
 SZ   = $(TRGT)size
-GDB  = $(TRGT)gdb
+GDB  = gdb-multiarch
 HEX  = $(CP) -O ihex
 BIN  = $(CP) -O binary
+STFLASH = st-flash
 
 # ARM-specific options here
 AOPT =
@@ -224,6 +225,9 @@ ULIBS =
 
 RULESPATH = $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC
 include $(RULESPATH)/rules.mk
+
+flash:
+	$(STFLASH) write build/$(PROJECT).bin 0x8000000
 
 gdbwrite:
 	$(GDB) -x ../gdbwrite.boot build/$(PROJECT).elf
